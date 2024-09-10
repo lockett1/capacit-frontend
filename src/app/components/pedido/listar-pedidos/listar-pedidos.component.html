@@ -1,0 +1,68 @@
+<div>
+    <h3>Lista pedidos</h3>
+    <form (ngSubmit)="filtrarPedidos()">
+        <div class="row mb-3">
+            <div class="col-md-3">
+                <label for="clienteNombre" class="form-label">Nombre cliente</label>
+                <input type="text" class="form-control" id="clienteNombre" name="clienteNombre" [(ngModel)]="filtro.clienteNombre">
+            </div>
+            <div class="col-md-3">
+                <label for="empleadoNombre" class="form-label">Nombre empleado</label>
+                <input type="text" class="form-control" id="empleadoNombre" name="empleadoNombre" [(ngModel)]="filtro.empleadoNombre">
+            </div>
+            <div class="col-md-3">
+                <label for="precioTotalMin" class="form-label">Precio total mínimo</label>
+                <input type="number" class="form-control" id="precioTotalMin" name="precioTotalMin" [(ngModel)]="filtro.precioTotalMin">
+            </div>
+            <div class="col-md-3">
+                <label for="precioTotalMax" class="form-label">Precio total máximo</label>
+                <input type="number" class="form-control" id="precioTotalMax" name="precioTotalMax" [(ngModel)]="filtro.precioTotalMax">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-3">
+                <label for="fecha" class="form-label">Fecha</label>
+                <input type="date" class="form-control" id="fecha" name="fecha" [(ngModel)]="filtro.fecha">
+            </div>
+            <div class="col-md-3">
+                <label for="status" class="form-label">Estado</label>
+                <select class="form-select form-control" id="status" name="status" [(ngModel)]="filtro.status">
+                    <option value="">Todos</option>
+                    <option value="Pendiente">Pendiente</option>
+                    <option value="En progreso">En progreso</option>
+                    <option value="Enviado">Enviado</option>
+                    <option value="Completado">Completado</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-primary">Buscar</button>
+            </div>
+        </div>
+    </form>
+
+    <br>
+
+    <table class="table table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Fecha</th>
+                <th>Estado</th>
+                <th>Total</th>
+                <th>Cliente</th>
+                <th>Empleado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pedido of pedidos">
+                <td>{{ pedido.fecha }}</td>
+                <td>{{ pedido.estado }}</td>
+                <td>{{ pedido.total }}</td>
+                <td>{{ pedido.nombreCliente }}</td>
+                <td>{{ pedido.nombreEmpleado }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

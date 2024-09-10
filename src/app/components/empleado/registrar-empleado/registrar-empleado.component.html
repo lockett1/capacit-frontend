@@ -1,0 +1,61 @@
+<div class="col-md-6 offset-md-3">
+    <h3 class="text-center">Registro de empleado</h3>
+    <form (ngSubmit)="onSubmit()" #empleadoForm="ngForm">
+        <div class="form-group">
+            <label>Nombre : </label>
+            <input type="text" class="form-control" id="nombre" [(ngModel)]="empleado.nombre" name="nombre" required minlength="4" maxlength="10" placeholder="Digite su nombre" #nombre="ngModel">
+            <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                <div *ngIf="nombre.errors.required">
+                    Digite su nombre por favor
+                </div>
+                <div *ngIf="nombre.errors.minlength">
+                    El nombre debe contener minimo 4 caracteres
+                </div>
+                <div *ngIf="nombre.errors.maxlength">
+                    El nombre debe contener maximo 10 caracteres
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Cargo : </label>
+            <input type="text" class="form-control" id="cargo" [(ngModel)]="empleado.cargo" name="cargo" required minlength="4" maxlength="10" placeholder="Digite su cargo" #cargo="ngModel">
+            <div class="alert alert-danger" *ngIf="cargo.invalid && (cargo.dirty || cargo.touched)">
+                <div *ngIf="cargo.errors.required">
+                    Digite su cargo por favor
+                </div>
+                <div *ngIf="cargo.errors.minlength">
+                    El cargo debe contener minimo 4 caracteres
+                </div>
+                <div *ngIf="cargo.errors.maxlength">
+                    El cargo debe contener maximo 10 caracteres
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Salario : </label>
+            <input type="number" class="form-control" id="salario" [(ngModel)]="empleado.salario" name="salario" required placeholder="Digite su salario" #salario="ngModel">
+            <div class="alert alert-danger" *ngIf="salario.invalid && (salario.dirty || salario.touched)">
+                <div *ngIf="salario.errors.required">
+                    Digite el salario por favor
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>RFC : </label>
+            <input type="text" class="form-control" id="rfc" [(ngModel)]="empleado.rfc" name="rfc" required minlength="12" maxlength="13" placeholder="Digite su RFC" #rfc="ngModel">
+            <div class="alert alert-danger" *ngIf="rfc.invalid && (rfc.dirty || rfc.touched)">
+                <div *ngIf="rfc.errors.required">
+                    Digite su RFC por favor
+                </div>
+                <div *ngIf="rfc.errors.minlength">
+                    El RFC debe contener minimo 12 caracteres
+                </div>
+                <div *ngIf="rfc.errors.maxlength">
+                    El RFC debe contener maximo 13 caracteres
+                </div>
+            </div>
+        </div>
+
+        <button class="btn btn-success" [disabled]="!empleadoForm.form.valid">Guardar</button>
+    </form>
+</div>
