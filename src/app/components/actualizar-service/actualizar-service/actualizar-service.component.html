@@ -1,0 +1,47 @@
+<p>actualizar-service works!</p>
+<div class="col-md-6 offset-md-3"></div>
+    <h3 class="text-center">Editar servicio</h3>
+    <form (ngSubmit)="onSubmit()" #customer_serviceForm="ngForm">
+        <div class="form-group">
+            <label>ID : </label>
+            <input type="text" class="form-control" id="id" [(ngModel)]="customer_service.id" name="id" placeholder="Digite el id" #id="ngModel">
+            <div class="alert alert-danger" *ngIf="id.invalid && (id.dirty || id.touched)">
+                <div *ngIf="id.errors.required">
+                    Digite el id por favor
+                </div>
+                <div *ngIf="id.errors.minlength">
+                    El id debe ser un número válido
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>fecha_servici : </label>
+            <input type="text" class="form-control" id="cargo" [(ngModel)]="customer_service.fecha_servicio" name="cargo" required minlength="30" maxlength="200" placeholder="Digite la fecha" #fecha_servicio="ngModel">
+            <div class="alert alert-danger" *ngIf="fecha_servicio.invalid && (fecha_servicio.dirty || fecha_servicio.touched)">
+                <div *ngIf="fecha_servicio.errors.required">
+                    Digite la fecha por favor
+                </div>
+                <div *ngIf="fecha_servicio.errors.minlength">
+                    la fecha debe contener minimo 30 caracteres
+                </div>
+                <div *ngIf="fecha_servicio.errors.maxlength">
+                    la fecha debe contener maximo 200 caracteres
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Comentarios : </label>
+            <input type="number" class="form-control" id="comentarios" [(ngModel)]="customer_service.comentarios" name="comentarios" required minlength="4" maxlength="200" required placeholder="Digite el comentario" #comentarios="ngModel">
+            <div class="alert alert-danger" *ngIf="comentarios.invalid && (comentarios.dirty || comentarios.touched)">
+                <div *ngIf="comentarios.errors.required">
+                    Digite el comentarios por favor
+                </div>
+                <div *ngIf="comentarios.errors.minlength"></div>
+                    El comentario debe contener minimo 12 caracteres
+                </div>
+                <div *ngIf="comentarios.errors.maxlength">
+                    El comentario debe contener maximo 200 caracteres
+                </div>
+            </div>
+        <button class="btn btn-success" [disabled]="!customer_serviceForm.form.valid">Guardar</button>
+    </form>

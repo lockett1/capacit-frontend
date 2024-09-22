@@ -1,0 +1,29 @@
+<br>
+<h3>Lista Servicios</h3>
+<table class="table table.stripped">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Nombre del cliente</th>
+            <th>Nombre del empleado</th>
+            <th>Fecha</th>
+            <th>Comentarios</th>
+            <th>Detalles</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Aqui se recorren los empleados y se enlistan en la tabla-->
+        <tr *ngFor="let customer_service of customerservice">
+            <td>{{customer_service.id}}</td>
+            <td>{{customer_service.clienteNombre}}</td>
+            <td>{{customer_service.empleadoNombre}}</td>
+            <td>{{customer_service.fecha_servicio}}</td>
+            <td>{{customer_service.comentarios}}</td>
+
+            <td>
+                <button (click)="actualizarServicio(customer_service.id)" class="btn btn-info">Actualizar</button>
+                <button (click)="eliminarServicio(customer_service.id)" class="btn btn-info" style="margin-left : 10px">Eliminar</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

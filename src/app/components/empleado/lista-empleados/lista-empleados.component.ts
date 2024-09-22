@@ -12,7 +12,7 @@ import { Component, OnInit } from '@angular/core';
 export class ListaEmpleadosComponent implements OnInit {
 
   empleados:Empleado[]; //se crea el arreglo empleado para enlistar empleados
-  constructor(private empleadoServicio: EmpleadoService, private router:Router) { }
+  constructor(private empleadoServicio : EmpleadoService, private router:Router) { }
 
   ngOnInit(): void { 
     this.obtenerEmpleados();
@@ -70,10 +70,12 @@ export class ListaEmpleadosComponent implements OnInit {
       }
     })
 
-
   }
 
   verDetallesEmpleado(id:number) {
+    this.router.navigate(['detalle-empleado',id]);
+  }
+  verDetallesCliente(id:number) {
     this.router.navigate(['detalle-empleado',id]);
   }
 }
